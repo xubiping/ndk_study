@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".cpp.second.JavaToNativeActivity"/>
+        <activity android:name=".cpp.second.NativeToJavaActivity"/>
+        <activity android:name=".cpp.second.JavaNativityActivity"/>
     </application>
 
 </manifest>

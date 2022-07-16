@@ -5,6 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <GridLayout
+        android:id="@+id/main_grid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:rowCount="3"
+        android:columnCount="3">
+        <Button
+            android:id="@+id/jtonative"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="jtonative"
+            />
+        <Button
+            android:id="@+id/nativetoj"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="nativetoj"
+            />
+        <Button
+            android:id="@+id/javanative"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="javanative"
+            />
+
+    </GridLayout>
 
     <TextView
         android:id="@+id/sample_text"

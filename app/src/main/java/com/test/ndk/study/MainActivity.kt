@@ -1,8 +1,12 @@
 package com.test.ndk.study
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.test.ndk.study.cpp.second.JavaNativityActivity
+import com.test.ndk.study.cpp.second.JavaToNativeActivity
+import com.test.ndk.study.cpp.second.NativeToJavaActivity
 import com.test.ndk.study.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +21,23 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         binding.sampleText.text = stringFromJNI()
+        binding.jtonative.setOnClickListener {
+            startActivity(Intent(this,JavaToNativeActivity().javaClass))
+        }
+        binding.nativetoj.setOnClickListener {
+            startActivity(Intent(this,NativeToJavaActivity().javaClass))
+        }
+        binding.javanative.setOnClickListener {
+            startActivity(Intent(this,JavaNativityActivity().javaClass))
+        }
     }
+
 
     /**
      * A native method that is implemented by the 'study' native library,
      * which is packaged with this application.
+     *
+     * external fun kotlin 声明方式
      */
     external fun stringFromJNI(): String
 
@@ -30,5 +46,18 @@ class MainActivity : AppCompatActivity() {
         init {
             System.loadLibrary("study")
         }
+    }
+
+    //second Java -> Native
+    fun java2Native(){
+        startActivity(Intent(this,JavaToNativeActivity().javaClass))
+    }
+    //second Java -> Native
+    fun native2Java(){
+        startActivity(Intent(this,NativeToJavaActivity().javaClass))
+    }
+    //second Java <-> Native
+    fun javaNative(){
+        startActivity(Intent(this,JavaNativityActivity().javaClass))
     }
 }
