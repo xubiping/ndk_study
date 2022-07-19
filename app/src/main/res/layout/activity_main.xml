@@ -31,6 +31,12 @@
             android:textAllCaps="false"
             android:text="javanative"
             />
+        <Button
+            android:id="@+id/datatype"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="datatype"
+            />
 
     </GridLayout>
 

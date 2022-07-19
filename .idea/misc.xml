@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
+        <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_main.xml" value="0.24509803921568626" />
         <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_second_java_native.xml" value="0.1" />
         <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_second_java_to_native.xml" value="0.3078125" />
         <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_second_native_to_java.xml" value="0.1" />
+        <entry key="..\:/myasgit/ndk_study/app/src/main/res/layout/activity_userdatatype.xml" value="0.1" />
       </map>
     </option>
   </component>
