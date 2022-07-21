@@ -14,6 +14,9 @@ project("study")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 #file(GLOB native_srcs "src/main/cpp/*.cpp")
+#该命令会查找指定目录下的所有源文件，然后将结果存进指定变量名
+aux_source_directory(hash_library HASH_LIBRARY_SRC)
+include_directories(hash_library)
 add_library( # Sets the name of the library.
         study
 
@@ -23,7 +26,10 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         native-lib.cpp
         second/second-native-lib.cpp
-        useDataType/userdatatype-native-lib.cpp)
+        useDataType/userdatatype-native-lib.cpp
+        ${HASH_LIBRARY_SRC}
+        hash-native-lib.cpp
+        )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

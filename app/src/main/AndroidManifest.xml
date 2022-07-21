@@ -22,6 +22,7 @@
         <activity android:name=".cpp.second.NativeToJavaActivity"/>
         <activity android:name=".cpp.second.JavaNativityActivity"/>
         <activity android:name=".cpp.useDataType.UserDataTypeActivity"/>
+        <activity android:name=".cpp.hash.HashActivity"/>
     </application>
 
 </manifest>

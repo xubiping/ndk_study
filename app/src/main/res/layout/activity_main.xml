@@ -37,6 +37,12 @@
             android:textAllCaps="false"
             android:text="datatype"
             />
+        <Button
+            android:id="@+id/hash"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="hash"
+            />
 
     </GridLayout>
 

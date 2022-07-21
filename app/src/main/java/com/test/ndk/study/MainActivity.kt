@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.test.ndk.study.cpp.hash.HashActivity
 import com.test.ndk.study.cpp.second.JavaNativityActivity
 import com.test.ndk.study.cpp.second.JavaToNativeActivity
 import com.test.ndk.study.cpp.second.NativeToJavaActivity
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.datatype.setOnClickListener {
             startActivity(Intent(this,UserDataTypeActivity().javaClass))
+        }
+        binding.hash.setOnClickListener {
+            startActivity(Intent(this,HashActivity().javaClass))
         }
     }
 

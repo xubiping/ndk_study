@@ -91,12 +91,13 @@ JNIEXPORT jobject JNICALL
 Java_com_test_ndk_study_cpp_useDataType_NativeUtil_javaClassTest(JNIEnv *env, jobject thiz) {
     jclass userClass = env->FindClass("com/test/ndk/study/cpp/useDataType/User");
 
-    /*jfieldID normalField = env->GetFieldID(userClass, "normalField", "I");
+    jfieldID normalField = env->GetFieldID(userClass, "normalField", "I");
     jfieldID staticField = env->GetStaticFieldID(userClass, "staticField", "I");
 
     jmethodID normalMethod = env->GetMethodID(userClass, "getNormalUserInfo", "()Ljava/lang/String;");
+    LOGD("javaClassTest: 0" );
     jmethodID staticMethod = env->GetStaticMethodID(userClass, "getStaticUserInfo", "()Ljava/lang/String;");
-
+    LOGD("javaClassTest: 1" );
     jmethodID voidInitMethod = env->GetMethodID(userClass, "<init>", "()V");
     jmethodID paramInitMethod = env->GetMethodID(userClass, "<init>", "(Ljava/lang/String;I)V");
 
@@ -141,6 +142,6 @@ Java_com_test_ndk_study_cpp_useDataType_NativeUtil_javaClassTest(JNIEnv *env, jo
 
     jstring ygName = env->NewStringUTF("老妖怪");
     jint ygAge = 999;
-    jobject userYG = env->NewObject(userClass, paramInitMethod, ygName, ygAge);*/
-    //return userYG;
+    jobject userYG = env->NewObject(userClass, paramInitMethod, ygName, ygAge);
+    return userYG;
 }
