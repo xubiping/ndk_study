@@ -23,6 +23,7 @@
         <activity android:name=".cpp.second.JavaNativityActivity"/>
         <activity android:name=".cpp.useDataType.UserDataTypeActivity"/>
         <activity android:name=".cpp.hash.HashActivity"/>
+        <activity android:name=".cpp.signature.SignatureActivity"/>
     </application>
 
 </manifest>

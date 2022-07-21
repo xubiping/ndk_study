@@ -8,6 +8,7 @@ import com.test.ndk.study.cpp.hash.HashActivity
 import com.test.ndk.study.cpp.second.JavaNativityActivity
 import com.test.ndk.study.cpp.second.JavaToNativeActivity
 import com.test.ndk.study.cpp.second.NativeToJavaActivity
+import com.test.ndk.study.cpp.signature.SignatureActivity
 import com.test.ndk.study.cpp.useDataType.UserDataTypeActivity
 import com.test.ndk.study.databinding.ActivityMainBinding
 
@@ -38,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.hash.setOnClickListener {
             startActivity(Intent(this,HashActivity().javaClass))
+        }
+        binding.signature.setOnClickListener {
+            startActivity(Intent(this,SignatureActivity().javaClass))
         }
     }
 

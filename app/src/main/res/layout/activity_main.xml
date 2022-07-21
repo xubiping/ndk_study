@@ -43,6 +43,12 @@
             android:textAllCaps="false"
             android:text="hash"
             />
+        <Button
+            android:id="@+id/signature"
+            android:layout_columnWeight="1"
+            android:textAllCaps="false"
+            android:text="signature"
+            />
 
     </GridLayout>
 

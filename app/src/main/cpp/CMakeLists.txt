@@ -29,6 +29,7 @@ add_library( # Sets the name of the library.
         useDataType/userdatatype-native-lib.cpp
         ${HASH_LIBRARY_SRC}
         hash-native-lib.cpp
+        signature/signature-native-lib.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
