@@ -4,7 +4,7 @@
 #include "hash_library/sha1.h"
 #include "hash_library/sha256.h"
 
-void formatSignature(char *data,char *resultData);
+void formatSignatureHash(char *data,char *resultData);
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_test_ndk_study_cpp_hash_NativeHashUtil_md5(JNIEnv *env, jobject thiz, jstring plaintext) {
@@ -15,7 +15,7 @@ Java_com_test_ndk_study_cpp_hash_NativeHashUtil_md5(JNIEnv *env, jobject thiz, j
     char * tabStr = new char [md5String.length()+1];
     strcpy(tabStr, md5String.c_str());
     char md5Result[128] = {0};
-    formatSignature(tabStr, md5Result);
+    formatSignatureHash(tabStr, md5Result);
     return env->NewStringUTF(md5Result);
 }
 
@@ -29,7 +29,7 @@ Java_com_test_ndk_study_cpp_hash_NativeHashUtil_sha1(JNIEnv *env, jobject thiz, 
     char * tabStr = new char [sha1String.length()+1];
     strcpy(tabStr, sha1String.c_str());
     char sha1Result[128] = {0};
-    formatSignature(tabStr, sha1Result);
+    formatSignatureHash(tabStr, sha1Result);
     return env->NewStringUTF(sha1Result);
 }
 
@@ -44,12 +44,12 @@ Java_com_test_ndk_study_cpp_hash_NativeHashUtil_sha256(JNIEnv *env, jobject thiz
     char * tabStr = new char [sha256String.length()+1];
     strcpy(tabStr, sha256String.c_str());
     char sha256Result[128] = {0};
-    formatSignature(tabStr, sha256Result);
+    formatSignatureHash(tabStr, sha256Result);
     return env->NewStringUTF(sha256Result);
 }
 
 
-void formatSignature(char *data,char *resultData){
+void formatSignatureHash(char *data,char *resultData){
     int resultIndex =0;
     int length = strlen(data);
     for(int i = 0; i<length;i++){

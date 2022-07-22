@@ -1,6 +1,7 @@
 package com.test.ndk.study.cpp.signature
 
 import android.content.Context
+import android.content.pm.PackageManager.GET_SIGNATURES
 import java.security.MessageDigest
 
 object SignatureUtil {
@@ -25,7 +26,7 @@ object SignatureUtil {
     fun getSignature(context: Context): android.content.pm.Signature? {
         val packageName = context.packageName
         val packageManager = context.packageManager
-        val packageInfo = packageManager.getPackageInfo(packageName, 0)
+        val packageInfo = packageManager.getPackageInfo(packageName, GET_SIGNATURES)
         val signatures = packageInfo.signatures
         return signatures[0]
     }
