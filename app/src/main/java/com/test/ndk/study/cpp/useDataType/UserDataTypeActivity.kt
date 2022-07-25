@@ -1,6 +1,7 @@
 package com.test.ndk.study.cpp.useDataType
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.test.ndk.study.databinding.ActivityUserdatatypeBinding
 
@@ -78,10 +79,11 @@ class UserDataTypeActivity : AppCompatActivity() {
             val userFromNative = NativeUtil.javaClassTest()
             val stringBuilder = StringBuffer()
             stringBuilder.append("{\n")
-            stringBuilder.append(String().format("\t\"name\": \"%s\",\n", userFromNative.name))
-            stringBuilder.append(String().format("\t\"age\": %d\n", userFromNative.age))
+            stringBuilder.append(String.format("\t\"name\": \"%s\",\n", userFromNative.name))
+            stringBuilder.append(String.format("\t\"age\": %d\n", userFromNative.age))
             stringBuilder.append("}")
-            binder.nativeJavaObjectText.text = stringBuilder.toString()
+            Log.v("javaClassTest ",stringBuilder.toString());
+            binder.javaClassTest.text = stringBuilder.toString()
 
         }
 

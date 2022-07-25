@@ -96,22 +96,33 @@ Java_com_test_ndk_study_cpp_useDataType_NativeUtil_javaClassTest(JNIEnv *env, jo
 
     jmethodID normalMethod = env->GetMethodID(userClass, "getNormalUserInfo", "()Ljava/lang/String;");
     LOGD("javaClassTest: 0" );
-    jmethodID staticMethod = env->GetStaticMethodID(userClass, "getStaticUserInfo", "()Ljava/lang/String;");
+    //kotlin 直接通过这种获取静态方法会崩溃，必须先获取 Companion 类
+    //jmethodID staticMethod = env->GetStaticMethodID(userClass, "getStaticUserInfo", "()Ljava/lang/String;");
+
+    //kotlin 获取静态方法 如下
+    jclass companionClazz = env->FindClass("com/test/ndk/study/cpp/useDataType/User$Companion");
+    jfieldID clazz_companionField = env->GetStaticFieldID(userClass,"Companion","Lcom/test/ndk/study/cpp/useDataType/User$Companion;");
+    jobject companionObj = env->GetStaticObjectField(userClass ,clazz_companionField);
+
+    jmethodID companionMethodID = env->GetMethodID(companionClazz,"getStaticUserInfo","()Ljava/lang/String;");
+
+
     LOGD("javaClassTest: 1" );
     jmethodID voidInitMethod = env->GetMethodID(userClass, "<init>", "()V");
+    LOGD("javaClassTest: 2" );
     jmethodID paramInitMethod = env->GetMethodID(userClass, "<init>", "(Ljava/lang/String;I)V");
-
+    LOGD("javaClassTest: 3" );
     jmethodID getFormatInfoMethod = env->GetMethodID(userClass, "getFormatInfo", "()Ljava/lang/String;");
-
+    LOGD("javaClassTest: 4" );
 
     jobject userOne = env->NewObject(userClass, voidInitMethod);
-
+    LOGD("javaClassTest: 5" );
     jstring name = env->NewStringUTF("HUBIN");
     jint age = 8;
     jobject userTwo = env->NewObject(userClass, paramInitMethod, name, age);
-
+    LOGD("javaClassTest: 6" );
     jobject userThree = env->AllocObject(userClass);
-
+    LOGD("javaClassTest: 7" );
 
     jint normalFieldValue = env->GetIntField(userOne, normalField);
     LOGD("normalField: %d", normalFieldValue);
@@ -123,14 +134,39 @@ Java_com_test_ndk_study_cpp_useDataType_NativeUtil_javaClassTest(JNIEnv *env, jo
     jstring normalMethodResult = static_cast<jstring>(normalMethodResultObj);
     const char *normalMethodResultNativeString = env->GetStringUTFChars(normalMethodResult, 0);
     LOGD("normalMethodResult: %s", normalMethodResultNativeString);
+    if(companionObj == NULL){
+        LOGD("companionObj: null");
+        return env->NewStringUTF("null");
+    }
+    if(companionMethodID == NULL){
+        LOGD("companionMethodID: null");
+        return env->NewStringUTF("null");
+    }else{
+        LOGD("companionMethodID: no null");
+    }
 
-    jobject staticMethodResultObj = env->CallStaticObjectMethod(userClass, staticMethod);
+    jobject staticMethodResultObj = (env)->CallObjectMethod(companionObj, companionMethodID);
+
+    if(staticMethodResultObj == NULL){
+        LOGD("staticMethodResultObj: null");
+    }else{
+        LOGD("staticMethodResultObj: not null");
+    }
     jstring staticMethodResult = static_cast<jstring>(staticMethodResultObj);
+    /*if(staticMethodResult == NULL){
+        LOGD("staticMethodResult: null");
+    }else{
+        LOGD("staticMethodResult: %s", staticMethodResultObj);
+    }*/
     const char *staticMethodResultNativeString = env->GetStringUTFChars(staticMethodResult, 0);
-    LOGD("staticMethodResult: %s", staticMethodResultNativeString);
-
+    if(staticMethodResultNativeString == NULL){
+        LOGD("staticMethodResultNativeString: null");
+    }else{
+        LOGD("staticMethodResultNativeString: %s", staticMethodResultNativeString);
+    }
     jobject getFormatInfoMethodResultObj = env->CallObjectMethod(userTwo, getFormatInfoMethod);
     jstring getFormatInfoMethodResult = static_cast<jstring>(getFormatInfoMethodResultObj);
+    //jstring 一定要通过 下面char转直接输出string 会崩溃
     const char *getFormatInfoMethodResultNativeString = env->GetStringUTFChars(getFormatInfoMethodResult, 0);
     LOGD("getFormatInfoMethodResult: %s", getFormatInfoMethodResultNativeString);
 
